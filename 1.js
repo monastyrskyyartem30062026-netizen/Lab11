@@ -7,7 +7,7 @@ const eventOutput = document.querySelector('#eventOutput');
 //  1.1 Додавання слухача кліку 
 const changeStyle = (event) => {
     const now = new Date().toLocaleTimeString();
-    console.log(Кнопку натиснуто: ${now});
+    console.log(`Кнопку натиснуто: ${now}`);
     event.currentTarget.classList.toggle('highlight'); // 1.2
 };
 toggleButton.addEventListener('click', changeStyle);
@@ -22,7 +22,7 @@ targetText.addEventListener('mouseover', handleMouseOver);
 
 //  1.5 Відстеження координат кліку 
 document.addEventListener('click', (event) => {
-    console.log(Клік у координатах: X=${event.clientX}, Y=${event.clientY});
+    console.log(`Клік у координатах: X=${event.clientX}, Y=${event.clientY}`);
 });
 
 //  1.6 Тимчасова зміна стилю після кліку 
@@ -36,7 +36,7 @@ toggleButton.addEventListener('click', changeTempStyle);
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') targetText.textContent = "Ви натиснули Enter!";
     if (event.key === 'Escape') targetText.textContent = "";
-    eventOutput.textContent = Ви натиснули клавішу: ${event.key};
+    eventOutput.textContent = `Ви натиснули клавішу: ${event.key}`;
 });
 
 //  1.8 Кнопка для активації наведення 
@@ -102,23 +102,24 @@ document.addEventListener("keydown", event => {
 
     //  2.5 Лічильник 
     keyCount++;
-    eventOutput.innerHTML += <p>Кількість натискань: ${keyCount}</p>;
+    eventOutput.innerHTML += `<p>Кількість натискань: ${keyCount}</p>`;
 
     // 2.6 Історія 
     keyHistory.push(event.key);
     if (keyHistory.length > 10) keyHistory.shift();
-    eventOutput.innerHTML += <p>Історія: ${keyHistory.join(', ')}</p>;
+    eventOutput.innerHTML += `<p>Історія: ${keyHistory.join(', ')}</p>`;
 
     //  2.7 Колір фону 
     if (key === 'r') keyboardArea.style.backgroundColor = 'red';
     if (key === 'g') keyboardArea.style.backgroundColor = 'green';
     if (key === 'b') keyboardArea.style.backgroundColor = 'blue';
+
     //  2.8 Зміна розміру тексту 
     const textElement = keyboardArea.querySelector('p');
     if (textElement) {
         let size = parseFloat(window.getComputedStyle(textElement).fontSize);
-        if (key === '+') textElement.style.fontSize = ${size + 2}px;
-        if (key === '-') textElement.style.fontSize = ${Math.max(10, size - 2)}px;
+        if (key === '+') textElement.style.fontSize = `${size + 2}px`;
+        if (key === '-') textElement.style.fontSize = `${Math.max(10, size - 2)}px`;
     }
 
     //  2.9 CapsLock 
@@ -131,7 +132,7 @@ document.addEventListener("keydown", event => {
     //  2.10 Міні-гра 
     if (key === secretKeys[currentIndex]) {
         currentIndex++;
-        keyboardArea.innerHTML = <p>Правильно! ${currentIndex}/${secretKeys.length}</p>;
+        keyboardArea.innerHTML = `<p>Правильно! ${currentIndex}/${secretKeys.length}</p>`;
         if (currentIndex === secretKeys.length) {
             keyboardArea.innerHTML = "<p>🎉 Ви виграли міні-гру!</p>";
             currentIndex = 0;
@@ -166,7 +167,7 @@ loginForm.addEventListener("submit", event => {
     };
 
     console.log("✅ Дані форми:", formData);
-    loginForm.insertAdjacentHTML("afterend", <p class="success">✅ Успішно! Дані форми виведено в консоль.</p>);
+    loginForm.insertAdjacentHTML("afterend", `<p class="success">✅ Успішно! Дані форми виведено в консоль.</p>`);
 });
 
 //  3.2 Валідація live 
@@ -191,5 +192,5 @@ usernameInput.addEventListener('blur', e => {
 
 //  3.4 Email 
 emailInput.addEventListener('change', e => {
-    console.log(📧 Email змінено на: ${e.target.value});
+    console.log(`📧 Email змінено на: ${e.target.value}`);
 });
