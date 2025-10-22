@@ -178,7 +178,7 @@ usernameInput.addEventListener('input', e => {
         usernameInput.style.border = '2px solid red';
     } else {
         usernameInput.classList.remove('error');
-        usernameInput.style.border = '1px solid #007bff';
+        usernameInput.style.border = '1px solid #ff0000ff';
     }
 });
 
